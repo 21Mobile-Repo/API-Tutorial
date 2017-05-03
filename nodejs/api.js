@@ -1,11 +1,11 @@
 var https = require('https');
-var psw = new Buffer("21mobile:maricon").toString('base64');
+var psw = new Buffer("user:password").toString('base64');
 var ts = Math.round((new Date()).getTime() / 1000);
 
 var data = JSON.stringify({
   "sms": [{
-    'messageText': 'Teste Integracao NodeJS',
-    'destination': '51992863986'
+    'messageText': 'Conteúdo da mensagem',
+    'destination': 'DDNNNNNNNNN'
   }]
 });
 
