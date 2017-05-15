@@ -62,6 +62,7 @@ public class ConsultaStatus {
         connection.setRequestMethod("GET");
         connection.setRequestProperty("Host", "api.21mobile.com.br");
         connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestProperty("Accept", "application/json");
 
         //Monta Token de autenticacao
         String autenticacao = "Login:Senha";
