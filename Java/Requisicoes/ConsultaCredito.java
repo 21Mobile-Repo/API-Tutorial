@@ -19,7 +19,7 @@ import org.apache.commons.codec.binary.Base64;
  * @author rafael_21
  */
 public class ConsultaCredito {
-    
+
     public void consultaCred() throws MalformedURLException, IOException {
         URL url = new URL("https://api.21mobile.com.br/v1/credits");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -30,6 +30,7 @@ public class ConsultaCredito {
         connection.setRequestMethod("GET");
         connection.setRequestProperty("Host", "api.21mobile.com.br");
         connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestProperty("Accept", "application/json");
 
         //Monta Token de autenticacao
         String autenticacao = "Login:Senha";
@@ -43,7 +44,10 @@ public class ConsultaCredito {
         InputStreamReader ins = new InputStreamReader(in, "UTF-8");
         BufferedReader streamReader = new BufferedReader(ins);
 
-        System.err.println(streamReader.readLine());
+        String result;
+
+        result = streamReader.readLine();
+        System.err.println(result);
 
     }
 }

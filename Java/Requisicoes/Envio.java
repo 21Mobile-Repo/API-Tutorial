@@ -5,7 +5,10 @@
  */
 package Requisicoes;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -57,6 +60,8 @@ public class Envio {
         //seta metodo POST para o envio do sms
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Host", "api.21mobile.com.br");
+        connection.setRequestProperty("Accept", "application/json");
+        connection.setRequestProperty("Content-Type", "application/json");
 
         //Monta Token de autenticacao
         String autenticacao = "Login:Senha";
@@ -70,11 +75,21 @@ public class Envio {
         OutputStream os = connection.getOutputStream();
         os.write(JsonFinal.toString().getBytes("UTF-8"));
         os.close();
-        
+
         System.err.println("Codigo da Requisição: ");
         System.err.println(connection.getResponseCode());
         System.err.println("Mensagem Resposta da Requisição: ");
         System.err.println(connection.getResponseMessage());
+
+        InputStream in = connection.getInputStream();
+        InputStreamReader ins = new InputStreamReader(in, "UTF-8");
+        BufferedReader streamReader = new BufferedReader(ins);
+
+        String result;
+
+        result = streamReader.readLine();
+        System.err.println(result);
+
     }
 
 }

@@ -31,20 +31,24 @@ public class ConsultaResposta {
         connection.setRequestMethod("GET");
         connection.setRequestProperty("Host", "api.21mobile.com.br");
         connection.setRequestProperty("Content-Type", "application/json");
-
+        connection.setRequestProperty("Accept", "application/json");
         //Monta Token de autenticacao
         String autenticacao = "Login:Senha";
         byte[] encoded = Base64.encodeBase64(autenticacao.getBytes());
         connection.setRequestProperty("Authorization", "Basic " + new String(encoded));
 
         System.err.println(connection.getResponseCode());
+
         System.err.println(connection.getResponseMessage());
 
         InputStream in = connection.getInputStream();
         InputStreamReader ins = new InputStreamReader(in, "UTF-8");
         BufferedReader streamReader = new BufferedReader(ins);
 
-        System.err.println(streamReader.readLine());
+        String result;
+
+        result = streamReader.readLine();
+        System.err.println(result);
 
     }
 

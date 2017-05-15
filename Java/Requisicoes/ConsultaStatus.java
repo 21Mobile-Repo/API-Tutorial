@@ -30,6 +30,7 @@ public class ConsultaStatus {
         connection.setRequestMethod("GET");
         connection.setRequestProperty("Host", "api.21mobile.com.br");
         connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestProperty("Accept", "application/json");
 
         //Monta Token de autenticacao
         String autenticacao = "Login:Senha";
@@ -43,7 +44,10 @@ public class ConsultaStatus {
         InputStreamReader ins = new InputStreamReader(in, "UTF-8");
         BufferedReader streamReader = new BufferedReader(ins);
 
-        System.err.println(streamReader.readLine());
+        String result;
+
+        result = streamReader.readLine();
+        System.err.println(result);
 
     }
 
@@ -72,7 +76,10 @@ public class ConsultaStatus {
         InputStreamReader ins = new InputStreamReader(in, "UTF-8");
         BufferedReader streamReader = new BufferedReader(ins);
 
-        System.err.println(streamReader.readLine());
+        String result;
+
+        result = streamReader.readLine();
+        System.err.println(result);
 
     }
 }
